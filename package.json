@@ -1,0 +1,24 @@
+{
+  "name": "gulp-boilerplate-browserify",
+  "version": "0.1.0",
+  "description": "Bootstrap for gulp tasks",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "tasks"
+  ],
+  "dependencies": {
+    "browserify": "^9.0.7",
+    "coffeeify": "^1.0.0",
+    "exorcist": "^0.1.6",
+    "gulp": "^3.8.11",
+    "gulp-util": "^3.0.4",
+    "uglifyify": "^3.0.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "author": "Marcos Hernandez <marcoslhc@gmail.com>",
+  "license": "MIT"
+}
