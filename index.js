@@ -1,16 +1,14 @@
 var gulp = require('gulp'),
     browserify = require('browserify'),
-    source = require('vinyl-source-stream'),
-    exorcist = require('exorcist');
+    source = require('vinyl-source-stream');
 
 module.exports = function ({ options, transforms, dest }) {
     return function () {
-         const bundle = browserify(options);
-
-        if (transforms && transforms.length > 1) {
-            bundle = transforms.reduce((bunle, transform) => {
+        let bundle = browserify(options);
+        if (transforms && transforms.length > 0) {
+            bundle = transforms.reduce((bundle, transform) => {
                 let transformArguments = transform;
-                if (!isArray(transformArguments)) {
+                if (!Array.isArray(transformArguments)) {
                     transformArguments = [transformArguments];
                 }
                 return bundle.transform.apply(bundle, transformArguments);
@@ -18,8 +16,9 @@ module.exports = function ({ options, transforms, dest }) {
         }
          return bundle
                 .bundle()
-                .pipe(exorcist(dest + '/main.js.map'))
+                .on('error', e => console.log(e))
                 .pipe(source('main.js'))
                 .pipe(gulp.dest(dest));
     };
 };
+a
